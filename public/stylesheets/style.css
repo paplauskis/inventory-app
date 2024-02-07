@@ -1,8 +1,40 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding: 20px;
+  font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
+  background-color: rgb(40, 40, 40);
 }
 
 a {
-  color: #00B7FF;
+  color: #93b096;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+a:hover {
+  opacity: 0.5;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.list-div {
+  max-width: fit-content;
+  min-width: fit-content;
+}
+
+.sidebar > li {
+  margin-bottom: 10px;
+}
+
+hr {
+  border-color: black;
+}
+
+.container {
+  display: flex;
+}
+
+.content {
+  padding-left: 60px;
 }
