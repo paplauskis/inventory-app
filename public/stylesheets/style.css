@@ -2,6 +2,7 @@ body {
   padding: 20px;
   font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
   background-color: rgb(40, 40, 40);
+  color: whitesmoke;
 }
 
 a {
@@ -36,5 +37,20 @@ hr {
 }
 
 .content {
-  padding-left: 60px;
+  padding-left: 80px;
+}
+
+.category-list a {
+  color: rgb(195, 195, 195);
+  font-size: 20px;
+}
+
+.category-list p {
+  font-size: 16px;
+  color: #647866;
+}
+
+.category-list {
+  padding: 0;
+  margin-top: 40px;
 }
