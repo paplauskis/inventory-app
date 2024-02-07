@@ -1,0 +1,10 @@
+extends layout 
+
+block content
+  h2= title
+  ul(class='category-list')
+    each category in category_list
+      li
+        a(href=`/catalog/category/${category._id}`) #{category.name}
+        p= category.description
+        hr
