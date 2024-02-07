@@ -1,0 +1,25 @@
+extends layout 
+
+block content 
+  h1= title
+  div(class='parts-div')
+    div(class='part-info')
+      div(class='part-data' id='header')
+        p Part name 
+      div(class='part-data' id='header')
+        p Part no.
+      div(class='part-data' id='header')
+        p Price 
+      div(class='part-data' id='header')
+        p No. in stock
+    each part in parts 
+      div(class='part-info')
+        div(class='part-data')
+          p #{part.name}
+        div(class='part-data')
+          p #{part.part_num}
+        div(class='part-data')
+          p #{part.price}$
+        div(class='part-data')
+          p #{part.quantity}
+
