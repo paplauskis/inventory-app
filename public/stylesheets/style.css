@@ -54,3 +54,52 @@ hr {
   padding: 0;
   margin-top: 40px;
 }
+
+.part-info {
+  display: flex;
+  font-size: 16px;
+  background-color: rgb(32, 32, 32);
+}
+
+.part-data {
+  border: 1px solid rgb(110, 110, 110);
+  margin: 0;
+}
+
+.part-data:hover {
+  background-color: black;
+}
+
+.part-info .part-data:nth-child(1) {
+  width: 400px;
+  padding-left: 10px;
+}
+.part-info .part-data:nth-child(2) {
+  width: 115px;
+  padding: 0px 10px;
+}
+
+.part-info .part-data:nth-child(3) {
+  width: 60px;
+  padding: 0px 10px;
+}
+
+.part-info .part-data:nth-child(4) {
+  width: 100px;
+  color: rgb(0, 0, 255);
+  font-weight: bold;
+  padding: 0px 10px;
+}
+
+.part-info .part-data:nth-child(2),
+.part-info .part-data:nth-child(3),
+.part-info .part-data:nth-child(4) {
+  display: flex;
+  justify-content: center;
+}
+
+#header {
+  color: #93b096;
+  font-weight: normal;
+  border-bottom: 3px solid rgb(110, 110, 110);
+}
