@@ -21,6 +21,10 @@ router.get('/categories', categoryController.category_list)
 
 router.get('/category/:id', categoryController.category_detail)
 
+router.get('/part/create', partController.part_create_get)
+
+router.post('/part/create', partController.part_create_post)
+
 router.get('/parts', partController.part_list)
 
 module.exports = router
