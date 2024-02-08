@@ -38,20 +38,13 @@ exports.category_detail = asyncHandler(async (req, res, next) => {
 exports.category_create_get = asyncHandler(async (req, res, next) => {
   res.render('category_form', {
     title: 'Create new category',
+    button_text: 'Submit',
   })
 })
 
 exports.category_create_post = [
-  query('category_name')
-    .trim()
-    .escape()
-    .isLength({ min: 3 })
-    .withMessage('Name cannot be that short'),
-  query('category_description')
-    .trim()
-    .escape()
-    .isLength({ min: 5 })
-    .withMessage('Description is too short to describe anything'),
+  query('category_name').trim().escape(),
+  query('category_description').trim().escape(),
 
   asyncHandler(async (req, res, next) => {
     const errors = validationResult(req)
@@ -99,3 +92,45 @@ exports.category_delete_post = asyncHandler(async (req, res, next) => {
     next(error)
   }
 })
+
+exports.category_update_get = asyncHandler(async (req, res, next) => {
+  const category = await Category.findById(req.params.id)
+
+  res.render('category_form', {
+    title: `Update ${category.name} category`,
+    category: category,
+    category_name: category.name,
+    category_description: category.description,
+    button_text: 'Update',
+  })
+})
+
+exports.category_update_post = [
+  query('category_name').trim().escape(),
+  query('category_description').trim().escape(),
+
+  asyncHandler(async (req, res, next) => {
+    const errors = validationResult(req)
+
+    const category = new Category({
+      name: req.body.category_name,
+      description: req.body.category_description,
+      _id: req.params.id,
+    })
+
+    if (!errors.isEmpty()) {
+      res.render('category_form', {
+        title: `Update ${category.name} category`,
+        category: category,
+        category_name: category.name,
+        category_description: category.description,
+        button_text: 'Update',
+        errors: errors.array(),
+      })
+      return
+    } else {
+      await Category.findByIdAndUpdate(req.params.id, category)
+      res.redirect('/catalog/categories')
+    }
+  }),
+]
