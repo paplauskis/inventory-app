@@ -1,0 +1,32 @@
+extends layout 
+
+block content 
+  h1= title
+  div(class='parts-div')
+    div(class='part-info')
+      div(class='part-data' id='header')
+        p Part name 
+      div(class='part-data' id='header')
+        p Part no.
+      div(class='part-data' id='header')
+        p Price 
+      div(class='part-data' id='header')
+        p No. in stock
+      div(class='part-data' id='header')
+        p Part category
+      div(class='part-data' id='header')
+    each part, index in part_list
+      div(class='part-info')
+        div(class='part-data')
+          p #{part.name}
+        div(class='part-data')
+          p #{part.part_num}
+        div(class='part-data')
+          p #{part.price}$
+        div(class='part-data')
+          p #{part.quantity}
+        div(class='part-data')
+          a(href=`/catalog/category/${part.category.id}`) #{part.category.name} 
+        div(class='part-data' id='update-delete')
+          a(href=`/catalog/part/${part._id}/update`) Update
+          a(href=`/catalog/part/${part._id}/delete`) Delete
