@@ -185,3 +185,16 @@ hr {
 #parts-to-be-deleted {
   width: fit-content;
 }
+
+select {
+  background-color: transparent;
+  color: whitesmoke;
+}
+
+select:focus {
+  outline: none;
+}
+
+.part-field {
+  width: 170px;
+}
