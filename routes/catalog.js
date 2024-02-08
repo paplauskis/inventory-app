@@ -9,6 +9,10 @@ router.get('/category/create', categoryController.category_create_get)
 
 router.post('/category/create', categoryController.category_create_post)
 
+router.get('/category/:id/delete', categoryController.category_delete_get)
+
+router.post('/category/:id/delete', categoryController.category_delete_post)
+
 router.get('/categories', categoryController.category_list)
 
 router.get('/category/:id', categoryController.category_detail)
