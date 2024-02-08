@@ -46,13 +46,28 @@ hr {
 }
 
 .category-list p {
-  font-size: 16px;
+  font-size: 14px;
   color: #647866;
+  margin: 0;
 }
 
 .category-list {
   padding: 0;
   margin-top: 40px;
+}
+
+.category-wrapper {
+  display: flex;
+  align-items: end;
+  gap: 30px;
+  margin-bottom: 8px;
+}
+
+#delete-category-link,
+#update-category-link {
+  color: rgb(0, 149, 255);
+  font-size: 14px;
+  margin: 0px 10px 10px 0px;
 }
 
 .part-info {
@@ -121,6 +136,11 @@ hr {
 #update-delete {
   display: flex;
   flex-direction: column;
+  gap: 7px;
+}
+
+#update-delete > a {
+  font-size: 14px;
 }
 
 .form-div {
