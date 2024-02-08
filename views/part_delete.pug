@@ -1,0 +1,9 @@
+extends layout 
+
+block content 
+  h1= title
+  h4 Are you sure you want to delete #{part.name} part?
+  p Part number: #{part.part_num}
+  form(method='POST')
+    input(type="hidden" name='part_id' value=part._id)
+    button.delete-part.submit-button(type='submit') Yes, delete
