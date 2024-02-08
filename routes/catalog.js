@@ -25,6 +25,10 @@ router.get('/part/create', partController.part_create_get)
 
 router.post('/part/create', partController.part_create_post)
 
+router.get('/part/:id/delete', partController.part_delete_get)
+
+router.post('/part/:id/delete', partController.part_delete_post)
+
 router.get('/parts', partController.part_list)
 
 module.exports = router
