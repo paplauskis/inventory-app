@@ -12,6 +12,9 @@ block content
       select.part-category-field.part-field(id='part-category' name='part_category' required value=part_category)
         option(value='') Please select a category
           for category in categories
+            if (link && link.endsWith('update'))
+              if category._id.toString() === part.category._id.toString()
+                option(value=category._id selected) #{category.name}
             option(value=category._id) #{category.name}
       label(for='price') Price
       input.price-field.part-field(type='number' id='price' name='part_price' min='1' max='1000' required placeholder='69' value=part_price)
