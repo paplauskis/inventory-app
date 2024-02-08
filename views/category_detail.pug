@@ -2,30 +2,32 @@ extends layout
 
 block content 
   h1= title
-  div(class='parts-div')
-    div(class='part-info')
-      div(class='part-data' id='header')
-        p Part name 
-      div(class='part-data' id='header')
-        p Part no.
-      div(class='part-data' id='header')
-        p Price 
-      div(class='part-data' id='header')
-        p No. in stock
-      div(class='part-data' id='header')
-    each part in parts 
+  if parts.length
+    div(class='parts-div')
       div(class='part-info')
-        div(class='part-data')
-          p #{part.name}
-        div(class='part-data')
-          p #{part.part_num}
-        div(class='part-data')
-          p #{part.price}$
-        div(class='part-data')
-          p #{part.quantity}
-        div(class='part-data' id='update-delete')
-          a(href=`/catalog/part/${part._id}/update`) Update
-          a(href=`/catalog/part/${part._id}/delete`) Delete
-
+        div(class='part-data' id='header')
+          p Part name 
+        div(class='part-data' id='header')
+          p Part no.
+        div(class='part-data' id='header')
+          p Price 
+        div(class='part-data' id='header')
+          p No. in stock
+        div(class='part-data' id='header')
+      each part in parts 
+        div(class='part-info')
+          div(class='part-data')
+            p #{part.name}
+          div(class='part-data')
+            p #{part.part_num}
+          div(class='part-data')
+            p #{part.price}$
+          div(class='part-data')
+            p #{part.quantity}
+          div(class='part-data' id='update-delete')
+            a(href=`/catalog/part/${part._id}/update`) Update
+            a(href=`/catalog/part/${part._id}/delete`) Delete
+  else
+    p This category has no parts
 
 
