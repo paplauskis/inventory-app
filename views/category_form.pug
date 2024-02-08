@@ -5,10 +5,10 @@ block content
   form(method='POST') 
     div(class='form-div')
       label(for='name') Category name (max 20 characters)
-      input.name-field(type="text" id='name' name='category_name' required maxlength='20' placeholder='Rear axle')
+      input.name-field(type="text" id='name' name='category_name' required maxlength='20' placeholder='Rear axle' value=category_name)
       label(for='description') Description (max 50 characters)
-      input.description-field(type='text' id='description' name='category_description' required maxlength='50' placeholder='The rear axle powers and stabilizes the rear wheels')
-    button.submit-button(type='submit') Submit
+      input.description-field(type='text' id='description' name='category_description' required maxlength='50' placeholder='The rear axle powers and stabilizes the rear wheels' value=category_description)
+    button.submit-button(type='submit') #{button_text}
 
   if errors
     for error in errors 
