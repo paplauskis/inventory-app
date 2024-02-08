@@ -73,3 +73,29 @@ exports.category_create_post = [
     }
   }),
 ]
+
+exports.category_delete_get = asyncHandler(async (req, res, next) => {
+  const [partsInCategory, category] = await Promise.all([
+    Part.find({ category: req.params.id }).exec(),
+    Category.findById(req.params.id),
+  ])
+  res.render('category_delete', {
+    title: 'category',
+    parts: partsInCategory,
+    category: category,
+  })
+})
+
+exports.category_delete_post = asyncHandler(async (req, res, next) => {
+  const category = await Category.findById(req.params.id)
+
+  if (category) {
+    await Part.find({ category: category._id }).deleteMany()
+    await Category.findByIdAndDelete(category._id)
+    res.redirect('/catalog/categories')
+  } else {
+    const error = new Error('Category cannot be found')
+    error.status(404)
+    next(error)
+  }
+})
