@@ -82,7 +82,7 @@ hr {
 }
 
 .part-data:hover {
-  background-color: black;
+  background-color: rgb(20, 20, 20);
 }
 
 .part-info .part-data:nth-child(1) {
@@ -169,6 +169,7 @@ hr {
 }
 
 .submit-button {
+  margin-top: 20px;
   background-color: transparent;
   border: 1px solid #647866;
   color: whitesmoke;
@@ -179,4 +180,8 @@ hr {
 .submit-button:hover {
   opacity: 0.5;
   cursor: pointer;
+}
+
+#parts-to-be-deleted {
+  width: fit-content;
 }
