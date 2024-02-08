@@ -103,6 +103,8 @@ hr {
 .part-info .part-data:nth-child(5) {
   width: 140px;
   align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .part-info .part-data:nth-child(6) {
@@ -119,4 +121,42 @@ hr {
 #update-delete {
   display: flex;
   flex-direction: column;
+}
+
+.form-div {
+  display: flex;
+  flex-direction: column;
+}
+
+.description-field {
+  width: 50ch;
+}
+
+.name-field {
+  width: 20ch;
+}
+
+.form-div > input {
+  margin: 5px 0px 20px 0px;
+  background-color: transparent;
+  border: 1px solid #647866;
+  height: 25px;
+  color: whitesmoke;
+}
+
+.form-div > input:focus {
+  outline: none;
+}
+
+.submit-button {
+  background-color: transparent;
+  border: 1px solid #647866;
+  color: whitesmoke;
+  font-size: 15px;
+  padding: 8px;
+}
+
+.submit-button:hover {
+  opacity: 0.5;
+  cursor: pointer;
 }
