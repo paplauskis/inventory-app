@@ -94,15 +94,20 @@ hr {
 .part-info .part-data:nth-child(2),
 .part-info .part-data:nth-child(3),
 .part-info .part-data:nth-child(4),
-.part-info .part-data:nth-child(5) {
+.part-info .part-data:nth-child(5),
+.part-info .part-data:nth-child(6) {
   display: flex;
   justify-content: center;
 }
 
 .part-info .part-data:nth-child(5) {
+  width: 140px;
+  align-items: center;
+}
+
+.part-info .part-data:nth-child(6) {
   width: 100px;
   align-items: center;
-  gap: 7px;
 }
 
 #header {
