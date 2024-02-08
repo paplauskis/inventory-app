@@ -1,11 +1,12 @@
 const Category = require('../models/category')
 const Part = require('../models/part')
 const asyncHandler = require('express-async-handler')
+const { query, validationResult } = require('express-validator')
 
 exports.index = asyncHandler(async (req, res, next) => {
   const [numCategories, numParts] = await Promise.all([
     Category.countDocuments({}).exec(),
-    Part.countDocuments({}).exec()
+    Part.countDocuments({}).exec(),
   ])
 
   res.render('index', {
@@ -33,3 +34,42 @@ exports.category_detail = asyncHandler(async (req, res, next) => {
     parts: partsInCategory,
   })
 })
+
+exports.category_create_get = asyncHandler(async (req, res, next) => {
+  res.render('category_form', {
+    title: 'Create new category',
+  })
+})
+
+exports.category_create_post = [
+  query('category_name')
+    .trim()
+    .escape(),
+    // .isLength({ min: 3 })
+    // .withMessage('Name cannot be that short'),
+  query('category_description')
+    .trim()
+    .escape(),
+    // .isLength({ min: 5 })
+    // .withMessage('Description is too short to describe anything'),
+
+  asyncHandler(async (req, res, next) => {
+    const errors = validationResult(req)
+
+    const category = new Category({
+      name: req.body.category_name,
+      description: req.body.category_description,
+    })
+
+    if (!errors.isEmpty()) {
+      res.render('category_form', {
+        title: 'Create new category',
+        errors: errors.array(),
+      })
+      return
+    } else {
+      await category.save()
+      res.redirect(category.url)
+    }
+  }),
+]
