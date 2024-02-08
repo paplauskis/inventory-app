@@ -12,6 +12,7 @@ block content
         p Price 
       div(class='part-data' id='header')
         p No. in stock
+      div(class='part-data' id='header')
     each part in parts 
       div(class='part-info')
         div(class='part-data')
@@ -22,4 +23,9 @@ block content
           p #{part.price}$
         div(class='part-data')
           p #{part.quantity}
+        div(class='part-data' id='update-delete')
+          a(href=`/catalog/part/${part._id}/update`) Update
+          a(href=`/catalog/part/${part._id}/delete`) Delete
+
+
 
