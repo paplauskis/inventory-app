@@ -5,6 +5,10 @@ const partController = require('../controllers/partController')
 
 router.get('/', categoryController.index)
 
+router.get('/category/create', categoryController.category_create_get)
+
+router.post('/category/create', categoryController.category_create_post)
+
 router.get('/categories', categoryController.category_list)
 
 router.get('/category/:id', categoryController.category_detail)
