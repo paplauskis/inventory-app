@@ -1,0 +1,24 @@
+extends layout 
+
+block content
+  h1= title
+  form(method='POST') 
+    div(class='form-div')
+      label(for='name') Part name (max 20 characters)
+      input.name-field.part-field(type="text" id='name' name='part_name' required maxlength='20' placeholder='Muffler mount' value=part_name)
+      label(for='part-number') Part number (11 digits)
+      input.part-number-field.part-field(type='number' id='part-number' name='part_number' required minLength='11' maxlength='11' placeholder='82347850192' value=part_num)
+      label(for='part-category') Category
+      select.part-category-field.part-field(id='part-category' name='part_category' required value=part_category)
+        option(value='') Please select a category
+          for category in categories
+            option(value=category._id) #{category.name}
+      label(for='price') Price
+      input.price-field.part-field(type='number' id='price' name='part_price' min='1' max='1000' required placeholder='69' value=part_price)
+      label(for='quantity') Number in stock
+      input.quantity-field.part-field(type='number' id='quantity' name='part_quantity' min='1' required placeholder='7' value=part_quantity)
+    button.submit-button(type='submit') #{button_text}
+
+  if errors
+    for error in errors 
+      p #{error.msg}
