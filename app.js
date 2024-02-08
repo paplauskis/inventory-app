@@ -6,12 +6,18 @@ const logger = require('morgan')
 
 const indexRouter = require('./routes/index')
 const usersRouter = require('./routes/users')
+const catalogRouter = require('./routes/catalog')
 const mongoose = require('mongoose')
 
 const app = express()
 
-mongoose.set('strictquery', false)
+// mongoose.set('strictquery', false)
 const mongoDB = ''
+
+main().catch((err) => console.log(err))
+async function main() {
+  await mongoose.connect(mongoDB)
+}
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
@@ -25,6 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', indexRouter)
 app.use('/users', usersRouter)
+app.use('/catalog', catalogRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -41,11 +48,5 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500)
   res.render('error')
 })
-
-// Wait for database to connect, logging an error if there is a problem
-main().catch((err) => console.log(err));
-async function main() {
-  await mongoose.connect(mongoDB);
-}
 
 module.exports = app
