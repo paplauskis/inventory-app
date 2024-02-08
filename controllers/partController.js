@@ -42,6 +42,27 @@ exports.part_create_post = [
   }),
 ]
 
+exports.part_delete_get = asyncHandler(async (req, res, next) => {
+  const part = await Part.findById(req.params.id)
+
+  res.render('part_delete', {
+    title: `Delete ${part.name}`,
+    part: part,
+  })
+})
+
+exports.part_delete_post = asyncHandler(async (req, res, next) => {
+  const part = await Part.findById(req.params.id)
+  if (part) {
+    await Part.findByIdAndDelete(part._id)
+    res.redirect('/catalog/categories')
+  } else {
+    const error = new Error('Part cannot be found')
+    error.status(404)
+    next(error)
+  }
+})
+
 exports.part_list = asyncHandler(async (req, res, next) => {
   const allParts = await Part.find({})
     .populate('category')
