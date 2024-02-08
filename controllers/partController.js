@@ -10,7 +10,7 @@ exports.part_create_get = asyncHandler(async (req, res, next) => {
     title: 'Create new part',
     link: req.url,
     categories: allCategories,
-    button_text: 'Submit'
+    button_text: 'Submit',
   })
 })
 
@@ -123,7 +123,7 @@ exports.part_update_post = [
       await Part.findByIdAndUpdate(req.params.id, part)
       res.redirect('/catalog/categories')
     }
-  })
+  }),
 ]
 
 exports.part_list = asyncHandler(async (req, res, next) => {
