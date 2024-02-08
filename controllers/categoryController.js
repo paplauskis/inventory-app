@@ -44,14 +44,14 @@ exports.category_create_get = asyncHandler(async (req, res, next) => {
 exports.category_create_post = [
   query('category_name')
     .trim()
-    .escape(),
-    // .isLength({ min: 3 })
-    // .withMessage('Name cannot be that short'),
+    .escape()
+    .isLength({ min: 3 })
+    .withMessage('Name cannot be that short'),
   query('category_description')
     .trim()
-    .escape(),
-    // .isLength({ min: 5 })
-    // .withMessage('Description is too short to describe anything'),
+    .escape()
+    .isLength({ min: 5 })
+    .withMessage('Description is too short to describe anything'),
 
   asyncHandler(async (req, res, next) => {
     const errors = validationResult(req)
