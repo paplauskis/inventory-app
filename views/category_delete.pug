@@ -1,0 +1,25 @@
+extends layout 
+
+block content
+  h1 #{category.name} category
+  if parts.length 
+    h3 If you delete this category, the following parts will also be deleted: 
+    div(class='part-info' id='parts-to-be-deleted')
+        div(class='part-data' id='header')
+          p Part name 
+        div(class='part-data' id='header')
+          p Part no.
+    each part in parts
+      div(class='part-info' id='parts-to-be-deleted')
+          div(class='part-data')
+            p #{part.name}
+          div(class='part-data')
+            p #{part.part_num}
+    form(method='POST')
+      input(type="hidden" name='category_id' value=category._id)
+      button.delete-category.submit-button(type='submit') Delete anyway
+  else 
+    h3 Are you sure you want to delete this category?
+    form(method='POST')
+      input(type="hidden" name='category_id' value=category._id)
+      button.delete-category.submit-button(type='submit') Yes, delete
