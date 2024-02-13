@@ -13,7 +13,6 @@ const app = express()
 
 // mongoose.set('strictquery', false)
 const mongoDB = process.env.MONGO_DB_URI
-console.log(process.env.MONGO_DB_URI)
 
 main().catch((err) => console.log(err))
 async function main() {
