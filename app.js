@@ -3,6 +3,7 @@ const express = require('express')
 const path = require('path')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
+require('dotenv').config()
 
 const indexRouter = require('./routes/index')
 const catalogRouter = require('./routes/catalog')
@@ -11,7 +12,8 @@ const mongoose = require('mongoose')
 const app = express()
 
 // mongoose.set('strictquery', false)
-const mongoDB = ''
+const mongoDB = process.env.MONGO_DB_URI
+console.log(process.env.MONGO_DB_URI)
 
 main().catch((err) => console.log(err))
 async function main() {
